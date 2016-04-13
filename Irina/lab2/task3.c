@@ -1,53 +1,33 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <time.h>
-
-void buffer();
-enum {false, true};
 
 int main()
 {
+	int size, i,j, space, star;
+	star = 1;
+	char arr[] = { ' ', '*' };
+	puts("Enter an odd number: ");
+	scanf("%i", &size); //wait enter
+
+	space = (size - 1) / 2; //search count of ' '
 	
-	int value;
-	int number;
-	int count = 0;
-	srand(time(0));
-	value = rand() % 100 + 1;
-	printf("%d\n", value);
-	puts("Enter a number: ");
-	
-	while (true){
-		
-		while (scanf("%2d", &number) == 1)
+	while (star <= size)
+	{
+		for (i = 0; i < (space); i++)
+			printf("%c", arr[0]);
+		for (j = 0; j < (star); j++)
+			printf("%c", arr[1]);
+		star = star + 2;
+		for (i = 0; i < (space); i++)
+			printf("%c", arr[0]);
+		space--;
+		if (space < 0)
 		{
-							
-				if (number > value)
-					puts("Your number is more.\n");
-				else if (number < value)
-					puts("Your number is less. \n");
-				else if (number == value){
-					puts("Guess!\n");
-					return 0;
-				}
-				count++;
-				printf("Count = %d\n", count);
-				if (count == 8)
-				{
-					puts("You lose!");
-					return 0;
-				}
-					
+			puts(" ");
+			break;
 		}
-		puts("Error! Repeat please\n");
-		buffer();
+		puts(" ");
 	}
-	return 1;
-}
-// clean buffer
-void buffer()
-{
-	char ch;
-	do
-		ch = getchar();
-	while (ch != '\n' && ch != EOF);
+
+	return 0;
 }
